@@ -1,0 +1,76 @@
+import java.util.Scanner;
+public class LessonThreeHW {
+
+
+        public static void main(String[] args) {
+            Scanner scanner = new Scanner(System.in);
+
+            System.out.print("Введите первое слово: ");
+            String word1 = scanner.next();
+
+            System.out.print("Введите второе слово: ");
+            String word2 = scanner.next();
+
+            if (word1.length() % 2 == 0 && word2.length() % 2 == 0) {
+                String newWord = returnNewWord(word1, word2);
+                System.out.println("Новое слово: " + newWord);
+            } else {
+                System.out.println("Одно или оба слова имеют нечетное количество букв.");
+            }
+
+            System.out.print("Введите первое число: ");
+            int num1 = scanner.nextInt();
+
+            System.out.print("Введите второе число: ");
+            int num2 = scanner.nextInt();
+
+            int sum = addNumbers(num1, num2);
+            int difference = subtractNumbers(num1, num2);
+            int product = multiplyNumbers(num1, num2);
+            double quotient = divideNumbers(num1, num2);
+
+            System.out.println("Сумма: " + sum);
+            System.out.println("Разность: " + difference);
+            System.out.println("Произведение: " + product);
+            System.out.println("Частное: " + quotient);
+
+            System.out.print("Введите сумму в евро: ");
+            double euroAmount = scanner.nextDouble();
+
+            System.out.print("Введите текущий курс (количество долларов за 1 евро): ");
+            double exchangeRate = scanner.nextDouble();
+
+            convertToUSD(euroAmount, exchangeRate);
+        }
+
+        public static String returnNewWord(String word1, String word2) {
+            int halfLength1 = word1.length() / 2;
+            int halfLength2 = word2.length() / 2;
+
+            String firstHalf = word1.substring(0, halfLength1);
+            String secondHalf = word2.substring(halfLength2);
+
+            return firstHalf + secondHalf;
+        }
+
+        public static int addNumbers(int num1, int num2) {
+            return num1 + num2;
+        }
+
+        public static int subtractNumbers(int num1, int num2) {
+            return num1 - num2;
+        }
+
+        public static int multiplyNumbers(int num1, int num2) {
+            return num1 * num2;
+        }
+
+        public static double divideNumbers(int num1, int num2) {
+            return (double) num1 / num2;
+        }
+
+        public static void convertToUSD(double euroAmount, double exchangeRate) {
+            double usdAmount = euroAmount * exchangeRate;
+            System.out.println("При курсе " + exchangeRate + " USD за один EUR, при обмене " + euroAmount + " EUR, вы получите " + usdAmount + " USD.");
+        }
+    }
